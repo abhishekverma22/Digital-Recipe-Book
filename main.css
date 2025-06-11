@@ -414,10 +414,17 @@ section .about-content {
   justify-content: space-evenly;
 }
 
-#Weekly-Recipe-Challenge .content-section img {
-  width: 30%;
+#Weekly-Recipe-Challenge .content-section  img{
+  max-width: 30%;
+  position: relative;
+  animation:  imageMove  2s  ease-in-out infinite;
 }
-
+@keyframes imageMove{
+  0%{
+    transform: scale(0.1);
+  }
+  
+}
 #Weekly-Recipe-Challenge .content-section .para {
   display: flex;
   flex-direction: column;
@@ -471,6 +478,12 @@ section .about-content {
   }
 }
 
+/* Food Showcase */
+
+#food-showcase{
+  min-height: 400px;
+  display: flex;
+}
 
 
 
@@ -543,7 +556,7 @@ section .about-content {
   }
 
   .sign-in-login {
-    font-size: 14px;
+    font-size: 12px;
     padding: 3px 8px;
     border: 1px solid;
     margin-right: 6px;
@@ -670,7 +683,7 @@ section .about-content {
   flex-direction: column;
 }
 #Weekly-Recipe-Challenge .content-section img{
-  width: 90%;
+  width: 100%;
 }
 #Weekly-Recipe-Challenge .content-section .para {
   margin-top: -10px;
@@ -685,6 +698,7 @@ section .about-content {
   padding: 4px 10px;
   font-size: 18px;
 }
+
 }
 
 
