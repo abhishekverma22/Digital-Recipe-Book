@@ -169,10 +169,19 @@ nav ul li a {
   bottom: 20px;
   cursor: pointer;
   z-index: 1;
+  animation: blinkBg 1.2s infinite;
 
-  &:hover {
-    background-color: #f0e2bf;
+}
 
+@keyframes blinkBg {
+
+  0%,
+  100% {
+    background-color: #d9f72e;
+  }
+
+  50% {
+    background-color: #ffffff;
   }
 }
 
@@ -194,8 +203,10 @@ nav ul li a {
 
 main {
   width: 100%;
-  height: 200vh;
+  height: 1000vh;
   padding: 30px 2%;
+  /* background-color: black; */
+  text-align: justify;
 }
 
 section {
@@ -204,7 +215,6 @@ section {
   padding: 2%;
   margin: 50px 0px;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-
 }
 
 main #about-section {
@@ -297,22 +307,23 @@ section .about-content {
   margin-top: 20px;
   background: linear-gradient(90deg, rgb(250, 250, 250) 0%, rgb(255, 255, 255) 17%, rgba(245, 212, 127, 1) 60%, rgba(255, 195, 43, 1) 82%, rgba(243, 179, 17, 1) 97%);
   box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-
 }
 
 #chef-thoughts-section img {
   width: 30%;
   height: 40%;
-  box-shadow: rgb(231, 231, 245) 0px 50px 100px -20px, rgba(255, 255, 255, 0.986) 0px 30px 60px -30px, rgb(155, 157, 160) 0px -2px 6px 0px inset;
+  box-shadow: rgba(0, 0, 0, 0.39) 0px 50px 100px -90px, rgba(0, 0, 0, 0.212) 0px 30px 60px -30px, rgb(155, 157, 160) 0px -2px 6px 0px inset;
 }
 
 #chef-thoughts-section .thought {
   width: 50%;
   margin-right: 160px;
 }
-#chef-thoughts-section .thought  h2{
+
+#chef-thoughts-section .thought h2 {
   font-weight: 900;
   text-transform: capitalize;
+  color: orangered;
 }
 
 #chef-thoughts-section .thought p {
@@ -321,19 +332,144 @@ section .about-content {
   letter-spacing: 1px;
   line-height: 35px;
   margin-right: 30px;
-  
+  color: rgb(29, 29, 11);
+  text-align: justify;
 }
 
 
+/*  unique and engaging sections */
 
+#unique-and-engaging-sections {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
+#unique-and-engaging-sections aside {
+  min-height: 400px;
+  width: 50%;
+  background: linear-gradient(140deg, #F3B311, #d35e5e);
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  margin: 20px;
+  padding: 20px;
+  transition: background 0.3s ease;
 
+  &:hover {
+    background: linear-gradient(140deg, #d35e5e, #F3B311);
+    cursor: pointer;
+  }
+}
 
+#unique-and-engaging-sections aside h1 {
+  color: whitesmoke;
+  font-size: 30px;
+  padding-bottom: 10px;
+}
 
+#unique-and-engaging-sections aside img {
+  width: 100%;
+  height: 300px;
+}
 
+#unique-and-engaging-sections aside p {
+  text-align: left;
+  color: black;
+  font-weight: normal;
+  font-size: 20px;
+  text-align: justify;
+  letter-spacing: 1px;
 
+}
 
+#unique-and-engaging-sections aside .content {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #F3B311;
+  justify-content: space-between;
+  align-items: center;
+  transition: 0.6s ease;
 
+  &:hover {
+    background-color: #f0e2bf;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    transform: scale(0.98);
+  }
+}
+
+#unique-and-engaging-sections aside .content p {
+  opacity: 1;
+  line-height: 30px;
+}
+
+/*  Weekly Recipe Challenge */
+#Weekly-Recipe-Challenge h1 {
+  font-size: 40px;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+#Weekly-Recipe-Challenge .content-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#Weekly-Recipe-Challenge .content-section img {
+  width: 30%;
+}
+
+#Weekly-Recipe-Challenge .content-section .para {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 250px;
+  width: 40%;
+}
+
+#Weekly-Recipe-Challenge .content-section .para p {
+  font-size: 23px;
+  line-height: 36px;
+  text-align: justify;
+  color: #7c5c0b;
+}
+
+#Weekly-Recipe-Challenge .content-section .para a {
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  font-weight: 300;
+  text-transform: capitalize;
+  border: 1px solid olivedrab;
+  padding: 10px 60px;
+  border-radius: 50px;
+  animation: blinkingContestButton 1.3s infinite;
+
+  &::before {
+    content: "———";
+    margin-right: 10px;
+    color: red;
+  }
+
+  &::after {
+    content: "———";
+    color: red;
+    margin-left: 10px;
+
+  }
+}
+
+@keyframes blinkingContestButton {
+
+  0%,
+  100% {
+    background-color: #f5baba;
+  }
+
+  50% {
+    background-color: #f596087a;
+  }
+}
 
 
 
@@ -398,7 +534,7 @@ section .about-content {
   nav ul li {
     margin: 0px;
     padding: 0px;
-    font-size: 12px;
+    font-size: 14px;
   }
 
   nav ul li a {
@@ -407,7 +543,7 @@ section .about-content {
   }
 
   .sign-in-login {
-    font-size: 1px;
+    font-size: 14px;
     padding: 3px 8px;
     border: 1px solid;
     margin-right: 6px;
@@ -512,6 +648,43 @@ section .about-content {
     font-size: 16px;
   }
 
+  #unique-and-engaging-sections {
+    flex-direction: column;
+
+  }
+
+  #unique-and-engaging-sections aside {
+    width: 100%;
+  }
+
+  #unique-and-engaging-sections aside h1 {
+    font-size: 20px;
+    padding-bottom: 10px;
+  }
+
+#Weekly-Recipe-Challenge h1 {
+  font-size: 20px;
+  letter-spacing: 2px;
+}
+#Weekly-Recipe-Challenge .content-section{
+  flex-direction: column;
+}
+#Weekly-Recipe-Challenge .content-section img{
+  width: 90%;
+}
+#Weekly-Recipe-Challenge .content-section .para {
+  margin-top: -10px;
+  justify-content: space-evenly;
+  width: 90%;
+}
+#Weekly-Recipe-Challenge .content-section .para p{
+  font-size: 16px;
+  line-height: normal;
+}
+#Weekly-Recipe-Challenge .content-section .para a {
+  padding: 4px 10px;
+  font-size: 18px;
+}
 }
 
 
