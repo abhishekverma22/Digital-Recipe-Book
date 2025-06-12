@@ -55,12 +55,15 @@ nav ul li a {
   }
 }
 
-.sign-in-login {
+#logout {
+  font-size: 20px;
   border: 1px solid rgb(255, 255, 255);
   background-color: orangered;
   color: white;
   border-radius: 10px;
   transition: 0.3s ease-in-out;
+  padding: 5px 20px;
+  cursor: pointer;
 
   &:hover {
     background-color: orange;
@@ -97,7 +100,8 @@ select {
   outline-color: orange;
   font-family: monospace;
 }
-#controls .fields p{
+
+#controls .fields p {
   margin-bottom: 10px;
 }
 
@@ -125,8 +129,7 @@ select {
   padding: 20px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   transition: 0.3s ease-in-out;
-  cursor: pointer;
-
+ 
   &:hover {
     box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
   }
@@ -188,7 +191,7 @@ select {
 
 .card .controls {
   display: flex;
-  align-items: center;
+  align-items: center ;
   justify-content: left;
   gap: 20px;
 }
