@@ -1,0 +1,305 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
+  background-color: rgba(252, 222, 226, 0.733);
+}
+
+nav {
+  max-height: 100px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 0 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(231, 217, 217, 0.438);
+  z-index: 1;
+}
+
+nav .logo img {
+  width: 160px;
+}
+
+nav ul li {
+  font-size: 25px;
+  display: inline-block;
+  list-style: none;
+  margin-left: 40px;
+}
+
+nav ul li a {
+  padding: 5px 16px;
+  text-decoration: none;
+  text-transform: capitalize;
+  color: orangered;
+  transition: 0.1s;
+
+  &:hover {
+    border-top: 3px solid rgb(255, 255, 255);
+    border-bottom: 3px solid rgb(255, 255, 255);
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+
+  }
+}
+
+.sign-in-login {
+  border: 1px solid rgb(255, 255, 255);
+  background-color: orangered;
+  color: white;
+  border-radius: 10px;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: orange;
+    border: 1px solid rgb(255, 255, 255);
+  }
+}
+
+main {
+  width: 100%;
+  display: flex;
+}
+
+aside {
+  height: 500vh;
+}
+
+#controls {
+  position: fixed;
+  left: 0;
+  background-color: #7a7272;
+  width: 400px;
+  padding: 20px;
+}
+
+#controls .fields {
+  margin-top: 150px;
+}
+
+#controls .fields input,
+select {
+  margin-bottom: 30px;
+  width: 100%;
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  outline-color: orange;
+  font-family: monospace;
+}
+
+#recipe-container {
+  margin-left: 400px;
+  background-color: #f3f3f3;
+  width: calc(100vw - 400px);
+  padding: 30px;
+}
+
+#recipe-container .recipe-cards {
+  margin-top: 120px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+
+  place-items: center;
+}
+
+#recipe-container .recipe-cards .card {
+  border: 1px solid #ccc;
+  background-color: #dad9d960;
+  max-width: 600px;
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.card .user-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #cec7c7;
+  margin-bottom: 20px;
+}
+
+.card .user-details .user-profile-photo {
+  height: 80px;
+  width: 80px;
+  background-color: red;
+  border-radius: 50%;
+  border: 5px solid orange;
+  display: flex;
+  align-items: center;
+}
+
+.card .user-details .user-profile-photo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.card .user-details .user-name-date {
+  margin-left: -130px;
+  padding: 10px 20px 10px 0px;
+  line-height: 25px;
+}
+
+.card .user-details .user-name-date h2 {
+  font-size: 19px;
+  border-bottom: 1px solid #857f7f;
+}
+
+.card .user-details .user-name-date p {
+  font-size: 14px;
+  color: #4d4c4c;
+}
+
+.card .user-details button {
+  font-size: 20px;
+  padding: 5px 50px;
+  background-color: rgb(245, 225, 138);
+
+}
+
+.card .recipe-media img{
+  max-height: 300px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.card  .controls{
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 20px;
+}
+
+.card  .like, .share{
+  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  font-size: 20px;
+ color: #7a7272;
+ cursor: pointer;
+}
+.card i{
+  font-size: 30px;
+}
+.card .controls h2{
+  margin-left: 70px;
+}
+.card  .descriptionn{
+  font-size: 18px;
+text-align: justify;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* footer */
+footer {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  background-color: #000000;
+  color: #ccc;
+  padding: 30px 8%;
+}
+
+footer .tasty-food {
+  text-align: center;
+  padding: 10px;
+}
+
+footer .tasty-food h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #d35e5e;
+  text-transform: uppercase;
+  font-family: monospace;
+  letter-spacing: 3px;
+}
+
+footer .tasty-food p {
+  color: #adacac;
+  font-size: 18px;
+}
+
+footer .middle {
+  margin-top: 70px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  padding: 0px 30px;
+
+}
+
+footer .middle h3 {
+  color: #7a7272;
+  font-size: 30px;
+}
+
+footer .middle ul li {
+  list-style: none;
+  margin: 20px auto;
+  font-size: 20px;
+  text-align: left;
+}
+
+footer .middle ul li i {
+  margin: 0px 20px;
+  font-size: 30px;
+  height: 30px;
+  width: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer .middle ul li a {
+  text-decoration: none;
+  color: rgb(99, 102, 93);
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    color: rgb(255, 255, 255);
+  }
+}
+
+footer .copyright {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 20px;
+  color: white;
+}
