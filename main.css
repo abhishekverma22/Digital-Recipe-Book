@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Borel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap');
 
 * {
   margin: 0;
@@ -8,6 +9,11 @@
 
 html {
   scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Roboto Flex", sans-serif;
+  font-optical-sizing: auto;
 }
 
 .hero {
@@ -91,6 +97,7 @@ nav ul li a {
   font-size: 180px;
   font-weight: 600;
   text-transform: capitalize;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   color: #ffffff9f;
   transition: 0.3s;
   opacity: 0;
@@ -203,7 +210,6 @@ nav ul li a {
 
 main {
   width: 100%;
-  height: 1000vh;
   padding: 30px 2%;
   /* background-color: black; */
   text-align: justify;
@@ -414,17 +420,19 @@ section .about-content {
   justify-content: space-evenly;
 }
 
-#Weekly-Recipe-Challenge .content-section  img{
+#Weekly-Recipe-Challenge .content-section img {
   max-width: 30%;
   position: relative;
-  animation:  imageMove  2s  ease-in-out infinite;
+  animation: imageMove 2s ease-in-out infinite;
 }
-@keyframes imageMove{
-  0%{
+
+@keyframes imageMove {
+  0% {
     transform: scale(0.1);
   }
-  
+
 }
+
 #Weekly-Recipe-Challenge .content-section .para {
   display: flex;
   flex-direction: column;
@@ -451,6 +459,7 @@ section .about-content {
   padding: 10px 60px;
   border-radius: 50px;
   animation: blinkingContestButton 1.3s infinite;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 
   &::before {
     content: "———";
@@ -480,17 +489,377 @@ section .about-content {
 
 /* Food Showcase */
 
-#food-showcase{
-  min-height: 400px;
-  display: flex;
+#food-showcase {
+  padding-bottom: 40px;
+
+}
+
+#food-showcase .food-content {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 80px;
+  margin-top: 40px;
+  place-items: center;
+}
+
+#food-showcase .food-content .food-card {
+  background-color: #ffb700;
+  padding-bottom: 20px;
+  border-radius: 8px;
+  text-align: center;
+  transition: 0.4s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale3d(1.2, 1.1, 1);
+  }
+}
+
+#food-showcase .food-content .food-card img {
+  width: 100%;
+  height: 70%;
+  border-radius: 8px;
+}
+
+#food-showcase .food-content .food-card p {
+  font-size: 30px;
+  text-transform: capitalize;
+  margin-bottom: 15px;
+}
+
+#food-showcase .food-content .food-card a {
+  font-size: 16px;
+  padding: 6px 80px;
+  text-decoration: none;
+  color: white;
+  font-weight: 800;
+  border-radius: 30px;
+  border: 1px solid black;
+  background-color: #000000;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #f0e2bf;
+    color: #000000;
+  }
 }
 
 
+/*  all-time-food*/
+#all-time-food {
+  height: 900px;
+}
+
+#all-time-food .parent div {
+  padding: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+
+}
+
+#all-time-food .parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 20px;
+}
+
+#all-time-food .parent h2 {
+  font-family: "Borel", cursive;
+  font-weight: 100;
+}
+
+.breakfast {
+  grid-column: span 2 / span 2;
+  grid-row: span 6 / span 6;
+  height: calc(900px - 70px);
+  background-image: url(./ASSETS/breakfast.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 0px -200px;
+  text-align: center;
+}
 
 
+.breakfast h2 {
+  text-transform: capitalize;
+  text-align: center;
+  letter-spacing: 2px;
+  margin-top: 30px;
+  font-size: 70px;
+  color: rgb(60, 88, 4);
+}
 
+.breakfast h2::first-letter {
+  color: #ee3434;
+  font-size: 100px;
+}
 
+.breakfast p {
+  width: 70%;
+  margin: 10px auto;
+  font-size: 20px;
+  word-spacing: 3px;
+  line-height: 30px;
+  text-align: left;
 
+}
+
+.breakfast .breakfast-link {
+  margin: 50px 150px;
+  font-size: 30px;
+  /* text-align: center; */
+  text-transform: capitalize;
+}
+
+.breakfast .breakfast-link a {
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid black;
+  background-color: #ffffff71;
+  padding: 10px 60px;
+  border-radius: 40px;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #00000057;
+    color: #fff;
+    border-color: #f3b311;
+  }
+}
+
+.lunch {
+  grid-column: span 2 / span 2;
+  grid-row: span 3 / span 3;
+  grid-column-start: 3;
+  background-image: linear-gradient(rgba(168, 179, 184, 0.212), rgba(203, 203, 214, 0.082)), url(./ASSETS/lunch.jpg);
+  background-size: contain;
+  background-repeat: no-repeat;
+
+}
+
+.lunch h2 {
+  text-align: center;
+  text-transform: capitalize;
+  font-size: 70px;
+  color: rgb(60, 88, 4);
+}
+
+.lunch h2::first-letter {
+  font-size: 90px;
+  color: #ee3434;
+  font-weight: 900;
+}
+
+.lunch .lunch-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.lunch .lunch-content p {
+  width: 40%;
+  font-size: 20px;
+  word-spacing: normal;
+  line-height: 30px;
+
+}
+
+.lunch .lunch-content a {
+  font-size: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid #f3b311;
+  padding: 4px 60px;
+  border-radius: 40px;
+  background-color: #fffbfb57;
+
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #00000057;
+    color: #fff;
+    border-color: #f3b311;
+  }
+}
+
+.dinner {
+  grid-column: span 2 / span 2;
+  grid-row: span 3 / span 3;
+  grid-column-start: 3;
+  grid-row-start: 4;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.096)), url(./ASSETS/dinner.jpg);
+  background-size: cover;
+  background-position: 0 -290px;
+  text-align: center;
+}
+
+.dinner h2 {
+  color: rgb(60, 88, 4);
+  font-size: 70px;
+  font-weight: 900;
+}
+
+.dinner h2 span {
+  letter-spacing: 2px;
+
+  font-size: 80px;
+  color: #ee3434;
+}
+
+.dinner p {
+  width: 60%;
+  margin: 0px auto 40px auto;
+  line-height: 25px;
+  font-size: 20px;
+  color: rgb(255, 254, 254);
+  text-align: left
+}
+
+.dinner a {
+  font-size: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid #f3b311;
+  padding: 4px 60px;
+  border-radius: 40px;
+  background-color: #ffffff57;
+  color: rebeccapurple;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #00000057;
+    color: #fff;
+    border-color: #f3b311;
+  }
+}
+
+.snacks-and-dessert {
+  grid-row: span 6 / span 6;
+  grid-column-start: 5;
+  grid-row-start: 1;
+  background: linear-gradient(rgba(255, 255, 255, 0.445)), url(./ASSETS/dessert.jpg);
+  background-size: contain;
+  text-align: center;
+
+}
+
+.snacks-and-dessert h2 {
+  text-align: center;
+  font-size: 60px;
+  color: rgb(60, 88, 4);
+}
+
+.snacks-and-dessert h2::first-letter {
+  color: #ee3434;
+}
+
+.snacks-and-dessert p {
+
+  font-size: 20px;
+  line-height: 30px;
+}
+
+.snacks-and-dessert p span {
+  color: rgb(132, 141, 0);
+  font-weight: 500;
+  font-size: 35px;
+}
+
+.snacks-and-dessert .dessert-para {
+  margin-bottom: 40px;
+}
+
+.snacks-and-dessert a {
+  font-size: 30px;
+  text-decoration: none;
+  font-weight: 500;
+  border: 1px solid #f3b311;
+  padding: 4px 80px;
+  border-radius: 40px;
+  background-color: #ffffff57;
+  color: rebeccapurple;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #00000057;
+    color: #fff;
+    border-color: #f3b311;
+  }
+}
+
+footer {
+  width: 100%;
+  background-color: #000000;
+  color: #ccc;
+  padding: 30px 8%;
+}
+
+footer .tasty-food {
+  text-align: center;
+  padding: 10px;
+}
+
+footer .tasty-food h3 {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: #d35e5e;
+  text-transform: uppercase;
+  font-family: monospace;
+  letter-spacing: 3px;
+}
+
+footer .tasty-food p {
+  color: #adacac;
+  font-size: 18px;
+}
+
+footer .middle {
+  margin-top: 70px;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  padding: 0px 30px;
+
+}
+
+footer .middle h3 {
+  color: #7a7272;
+  font-size: 30px;
+}
+
+footer .middle ul li {
+  list-style: none;
+  margin: 20px auto;
+  font-size: 20px;
+  text-align: left;
+}
+
+footer .middle ul li i {
+  margin: 0px 20px;
+  font-size: 30px;
+  height: 30px;
+  width: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+footer .middle ul li a {
+  text-decoration: none;
+  color: rgb(99, 102, 93);
+  transition: 0.2s ease-in-out;
+
+  &:hover {
+    color: rgb(255, 255, 255);
+  }
+}
+
+footer .copyright {
+  text-align: center;
+  margin-top: 50px;
+  font-size: 20px;
+  color: white;
+}
 
 
 
@@ -603,7 +972,8 @@ section .about-content {
 
   section .about-content {
     flex-direction: column;
-    padding: 20px;
+    padding: 10px 20px;
+    
   }
 
   .about-content p {
@@ -613,8 +983,9 @@ section .about-content {
   }
 
   .about-content .images {
+    top: -40px;
     width: 100%;
-    height: 100%;
+    height: 50%;
   }
 
   #delicious-food {
@@ -670,35 +1041,72 @@ section .about-content {
     width: 100%;
   }
 
+  #unique-and-engaging-sections aside img {
+    height: 200px;
+  }
+
   #unique-and-engaging-sections aside h1 {
     font-size: 20px;
     padding-bottom: 10px;
   }
 
-#Weekly-Recipe-Challenge h1 {
-  font-size: 20px;
-  letter-spacing: 2px;
-}
-#Weekly-Recipe-Challenge .content-section{
-  flex-direction: column;
-}
-#Weekly-Recipe-Challenge .content-section img{
-  width: 100%;
-}
-#Weekly-Recipe-Challenge .content-section .para {
-  margin-top: -10px;
-  justify-content: space-evenly;
-  width: 90%;
-}
-#Weekly-Recipe-Challenge .content-section .para p{
-  font-size: 16px;
-  line-height: normal;
-}
-#Weekly-Recipe-Challenge .content-section .para a {
-  padding: 4px 10px;
-  font-size: 18px;
-}
+  #unique-and-engaging-sections aside p {
+    letter-spacing: normal;
+    font-size: 16px;
+  }
 
+  #Weekly-Recipe-Challenge h1 {
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  #Weekly-Recipe-Challenge .content-section {
+    flex-direction: column;
+  }
+
+  #Weekly-Recipe-Challenge .content-section img {
+    width: 100%;
+  }
+
+  #Weekly-Recipe-Challenge .content-section .para {
+    margin-top: -10px;
+    justify-content: space-evenly;
+    width: 90%;
+  }
+
+  #Weekly-Recipe-Challenge .content-section .para p {
+    font-size: 16px;
+    line-height: normal;
+  }
+
+  #Weekly-Recipe-Challenge .content-section .para a {
+    padding: 4px 10px;
+    font-size: 18px;
+  }
+
+  #food-showcase .food-content {
+    place-items: center;
+    gap: 10px;
+    row-gap: 20px;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  #food-showcase .food-content .food-card {
+    width: 150px;
+  }
+
+  #food-showcase .food-content .food-card p {
+    font-size: 20px;
+  }
+
+  #food-showcase .food-content .food-card a {
+    font-size: 15px;
+    font-weight: normal;
+    padding: 5px 20px;
+  }
+
+
+  
 }
 
 

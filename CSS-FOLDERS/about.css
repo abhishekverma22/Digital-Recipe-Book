@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Borel&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.conatiner{
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(234, 255, 218);
+}
+.conatiner .heading {
+  color: olivedrab;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 100;
+  font-family: "Borel", cursive;
+  text-transform: uppercase;
+}
+.conatiner .heading::first-letter{
+  color: orange;
+  letter-spacing: 3px;
+}
+.conatiner p,
+ul {
+  width: 60%;
+  margin: 20px auto;
+  font-size: 20px;
+}
+footer{
+  position: relative;
+  bottom: -10px;
+  min-height: 70px;
+  background-color: black;
+  color: aliceblue;
+}
+footer h2 {
+  padding: 20px;
+text-align: center;
+margin-top: -80px; 
+}
