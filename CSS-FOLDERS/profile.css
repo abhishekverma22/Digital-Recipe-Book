@@ -83,16 +83,17 @@ section {
 }
 
 #container {
-  background-color: aliceblue;
+  background-color: black;
   width: 60%;
   height: 100vh;
   border-right: 1px solid #ccc;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 #container .information {
   position: fixed;
-  top: 101px;
+  top: 100px;
   background-color: #e9e4e4;
 }
 
@@ -167,17 +168,13 @@ section {
   margin-top: 20px;
 }
 
-#container .all-posts {
-  margin-top: 450px;
-  height: 200vh;
-  width: 100%;
-  background-color: #e0eed4;
 
-}
 
 #edit-profile-form {
   overflow-y: auto;
   width: 40%;
+  margin-top: 190px;
+  min-height: 100vh;
   background-color: rgba(31, 36, 4, 0.815);
 }
 
@@ -189,8 +186,9 @@ section {
 }
 
 
+/* Recipe form  */
 .container {
-  display: none;
+  /* display: none; */
   background-color: rgba(240, 243, 247, 0.644);
   width: 100%;
   padding: 20px 40px;
@@ -232,38 +230,24 @@ textarea {
   align-items: center;
   justify-content: space-between;
 }
-.bottom-line .upload-image, .difficulty{
+
+.bottom-line .upload-image,
+.difficulty {
   width: 50%;
 }
-.bottom-line .difficulty select{
+
+.bottom-line .difficulty select {
   width: 100%;
 }
 
-.bottom-line .upload-image input{
+.bottom-line .upload-image input {
   width: 100%;
 }
- .inputs .ingredients input{
-  width: 70%;
+#ingredient-section input{
+  width: 100%;
 }
-.delete-ingredient{
-  font-size: 20px;
-  padding: 6px 30px;
-  cursor: pointer;
-  background-color: rgb(240, 70, 70);
-  border:none;
-  border-radius: 10px;
-  color: #ffffff;
-  margin-left: 20px;
-  transition: 0.3s ease-in-out;
-  &:hover{
-    background-color: red;
-  }
-  &:active{
-    transform: scale(0.95);
-  }
-}
-
-#add-ingredient-btn, #post-btn{
+#add-ingredient-btn,
+#post-btn {
   cursor: pointer;
   margin: 10px 0px;
   width: 100%;
@@ -271,11 +255,96 @@ textarea {
   font-weight: 700;
   padding: 9px 0px;
 }
-#post-btn{
+
+#post-btn {
   background-color: orange;
 }
-#add-ingredient-btn{
+
+#add-ingredient-btn {
   background-color: olive;
   color: #ffffff;
   border: none;
+}
+
+
+
+
+
+/* All Post Conatiner */
+#container #all-posts {
+  padding: 10px;
+  margin-top: 490px;
+  height: 200vh;
+  width: 1081px;
+  background-color: #e0eed4;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+  text-transform: capitalize;
+}
+
+
+/* EACH POST CARD */
+.post-card {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border: 1px solid #ccc;
+  max-height: 160px;
+  padding: 5px;
+  background-color: #f8efef;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    transform: scale(1.0.6);
+  }
+}
+
+.post-card h4 {
+  padding: 5px;
+  text-align: center;
+  border-bottom: 1px solid #c7b8b8;
+  font-weight: 900;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 8px;
+}
+
+.post-card .category-p {
+  font-weight: 700;
+  font-family: sans-serif;
+  padding: 5px;
+  font-size: 17px;
+}
+
+.post-card p {
+  font-size: 14px;
+  padding: 5px;
+}
+
+.post-card button {
+  font-size: 16px;
+  padding: 5px 10px;
+  width: 46%;
+  margin: 10px 4px;
+  cursor: pointer;
+}
+
+.post-card .see-details {
+  background-color: orange;
+  background-color: rgb(253, 195, 86);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    color: #fff;
+    background-color: rgb(255, 166, 0);
+  }
+}
+
+.post-card .edit-btn {
+  transition: 0.3s ease-in-out;
+
+  &:hover {
+    background-color: orangered;
+    color: #fff;
+  }
 }

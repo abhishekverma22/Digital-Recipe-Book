@@ -127,25 +127,8 @@ textarea {
 .bottom-line .upload-image input{
   width: 100%;
 }
- .inputs .ingredients input{
-  width: 70%;
-}
-.delete-ingredient{
-  font-size: 20px;
-  padding: 6px 30px;
-  cursor: pointer;
-  background-color: rgb(240, 70, 70);
-  border:none;
-  border-radius: 10px;
-  color: #ffffff;
-  margin-left: 20px;
-  transition: 0.3s ease-in-out;
-  &:hover{
-    background-color: red;
-  }
-  &:active{
-    transform: scale(0.95);
-  }
+#ingredient-section input{
+  width: 100%;
 }
 
 #add-ingredient-btn, #post-btn{

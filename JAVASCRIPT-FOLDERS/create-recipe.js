@@ -21,7 +21,11 @@ let difficulty = document.getElementById('difficulty');
 let recipeImage = document.getElementById('recipe-image')
 let addIngredientButton = document.getElementById('add-ingredient-btn');
 let postButton = document.getElementById('post-btn');
-let ingredientSection = document.getElementById('ingredient-section')
+let ingredientSection = document.getElementById('ingredient-section');
+
+// current date in dd-mm-yyyy
+let today = new Date();
+let formattedDate = `${String(today.getDate()).padStart(2, '0')}-${String(today.getMonth() + 1).padStart(2, '0')}-${today.getFullYear()}`;
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -60,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         Difficulty: difficulty.value,
         ImageUrl: recipeImage.files[0] ? recipeImage.files[0].name : "",
-        CreatedAt: new Date()
+        CreatedAt: formattedDate
       }
 
 
@@ -73,6 +77,19 @@ document.addEventListener('DOMContentLoaded', () => {
             const recipeRef = collection(db, "users", userID, "recipes");
             await addDoc(recipeRef, recipeData);
             alert("Recipe posted successfully!");
+            recipeTitle.value = ""
+            category.value = ""
+            description.value = ""
+            ingredients.value = ""
+            preparationSteps.value = ""
+            hours.value = ""
+            minute.value = ""
+            difficulty.value = ""
+            recipeImage.value = ""
+            addIngredientButton.value = ""
+            postButton.value = ""
+            ingredientSection.value = ""
+
           } catch (error) {
             console.log(`Error adding recipes :  ${error}`)
             alert("Error adding recipe");
