@@ -7,6 +7,7 @@
   <title>Create- Post Tasty-Food</title>
   <link rel="stylesheet" href="../CSS-FOLDERS/create.css">
    <script type="module" src="../JAVASCRIPT-FOLDERS/logout.js"></script>
+   <script type="module" src="../JAVASCRIPT-FOLDERS/create-recipe.js"></script>
 </head>
 
 <body>
@@ -25,12 +26,14 @@
       </div>
     </nav>
   </header>
+
+
   <main>
     <div class="container">
       <div class="inputs">
         <p>Title</p>
         <div class="name-category">
-          <input type="text" placeholder="Recipe Title">
+          <input type="text" placeholder="Recipe Title" id="recipe-title">
           <select name="category" id="category">
             <option value="" selected disabled>Category</option>
             <option value="breakfast">Breakfast</option>
@@ -44,15 +47,16 @@
         <p>Description</p>
         <textarea name="description" id="description" placeholder="Write Short Description"></textarea>
         <p>Ingredient</p>
-        <div class="ingredients">
-          <input type="text" placeholder="Ingredient with Quantity" name="ingredients">
+        <div class="ingredients" id="ingredient-section">
+          <input type="text" placeholder="Ingredient with Quantity" name="ingredients" >
+          <button class="delete-ingredient">Delete</button>
           <button id="add-ingredient-btn">+ Add Ingredient</button>
         </div>
         <p>Preparation Steps</p>
         <textarea name="preparation-steps" id="preparation-steps"></textarea>
         <p>Cooking Time</p>
         <div class="time">
-          <input type="number" placeholder="Hour">
+          <input type="number" placeholder="hour">
           <input type="number" placeholder="minutes">
         </div>
 
@@ -60,14 +64,15 @@
           <div class="difficulty">
             <p>Difficulty Level</p>
             <select name=" dfficulty" id=" difficulty">
+              <option value="" disabled selected>Select Difficulty</option>
               <option value="easy">Easy</option>
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
             </select>
           </div>
           <div class="upload-image">
-            <p>Upload Image </p>
-            <input type="file">
+            <p>Upload Image</p>
+            <input type="file" id="recipe-image">
           </div>
         </div>
 
