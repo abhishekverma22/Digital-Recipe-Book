@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
           await setDoc(doc(db, "users", userCredentials.user.uid), userDetails);
 
           // Redirect  the user to after-login-page
-          window.location.replace("../HTML-FOLDERS/sign-in.html")
+          window.location.replace("../index.html")
 
         } catch (error) {
           alert(error.message)
