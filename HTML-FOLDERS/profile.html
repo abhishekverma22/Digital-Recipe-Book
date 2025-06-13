@@ -55,7 +55,7 @@
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, ratione tempora quae cum illum
             exercitationem
             porro quis quia, labore esse nostrum!</p>
-          <button>Editi Profile</button>
+          <button>Edit Profile</button>
         </div>
       </div>
       <div class="all-posts">
@@ -65,7 +65,57 @@
 
     <section id="edit-profile-form">
       <section id="profile-edit-section">
+          <div class="container">
+            <div class="inputs">
+              <p>Title</p>
+              <div class="name-category">
+                <input type="text" placeholder="Recipe Title" id="recipe-title">
+                <select name="category" id="category">
+                  <option value="" selected disabled>Category</option>
+                  <option value="breakfast">Breakfast</option>
+                  <option value="lunch">Lunch</option>
+                  <option value="dinner">Dinner</option>
+                  <option value="dessert">Desserts</option>
+                  <option value="snack">Snacks</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              <p>Description</p>
+              <textarea name="description" id="description" placeholder="Write Short Description"></textarea>
+              <p>Ingredient</p>
+              <div class="ingredients" id="ingredient-section">
+                <input type="text" placeholder="Ingredient with Quantity" name="ingredients">
+                <button class="delete-ingredient">Delete</button>
+                <button id="add-ingredient-btn">+ Add Ingredient</button>
+              </div>
+              <p>Preparation Steps</p>
+              <textarea name="preparation-steps" id="preparation-steps"></textarea>
+              <p>Cooking Time</p>
+              <div class="time">
+                <input type="number" placeholder="Hour" id="hour">
+                <input type="number" placeholder="Minutes" id="minute">
+              </div>
 
+              <div class="bottom-line">
+                <div class="difficulty">
+                  <p>Difficulty Level</p>
+                  <select name=" dfficulty" id="difficulty">
+                    <option value="" disabled selected>Select Difficulty</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                  </select>
+                </div>
+                <div class="upload-image">
+                  <p>Upload Image</p>
+                  <input type="file" id="recipe-image">
+                </div>
+              </div>
+
+              <button id="post-btn">Edit</button>
+            </div>
+
+          </div>
       </section>
     </section>
   </main>
