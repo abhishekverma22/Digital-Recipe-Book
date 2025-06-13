@@ -1,33 +1,17 @@
-import {db, auth} from "../firebase-config.js"
-import {
-  doc,
-  setDoc,
-  getDoc,
-  collection,
-  addDoc,
-  deleteDoc
-} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js"
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js"
-
-
-let userName = document.getElementById('username')
-
-
-document.addEventListener("DOMContentLoaded", ()=>{
+import { db, auth } from "../firebase-config.js";
+import { collection, getDocs} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js";
+import { onAuthStateChanged} from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js";
 
 onAuthStateChanged(auth, async(user)=>{
   if(user){
-    let userDetails = await getDoc(doc(db, "users", user.uid));
+    const userID = user.uid;
+    const  recipesRef = collection(db, "users",  userID, "recipes")
 
-    if(userDetails.exists()){
-      const getUsername = userDetails.data()
-      userName.innerText = `${getUsername.name.firstName} ${getUsername.name.lastName}`
-
+    try {
+      const querySnapshot  = await getDocs(recipesRef);
+      let userRecipes = [];
+    } catch (error) {
+      
     }
-
   }
-})
-   
-
-
 })
