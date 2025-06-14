@@ -173,7 +173,8 @@ section {
 #edit-profile-form {
   overflow-y: auto;
   width: 40%;
-  margin-top: 190px;
+  margin-top: 100px;
+  z-index: -2;
   min-height: 100vh;
   background-color: rgba(31, 36, 4, 0.815);
 }
@@ -195,7 +196,6 @@ section {
   border: 3px solid #ffffff;
   border-radius: 10px;
   margin: auto;
-
 }
 
 .container .inputs p {
@@ -243,9 +243,11 @@ textarea {
 .bottom-line .upload-image input {
   width: 100%;
 }
-#ingredient-section input{
+
+#ingredient-section input {
   width: 100%;
 }
+
 #add-ingredient-btn,
 #post-btn {
   cursor: pointer;

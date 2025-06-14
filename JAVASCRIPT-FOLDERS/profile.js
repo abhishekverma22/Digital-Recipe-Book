@@ -14,29 +14,29 @@ let userName = document.getElementById('username')
 
 
 document.addEventListener("DOMContentLoaded", () => {
-
+  
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       let userDetails = await getDoc(doc(db, "users", user.uid));
-
+      
       if (userDetails.exists()) {
         const getUsername = userDetails.data()
         userName.innerText = `${getUsername.name.firstName} ${getUsername.name.lastName}`
-
+        
       }
     }
 
-
+    
   })
   // function for fetch recipes 
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       const userID = user.uid;
       const recipesRef = collection(db, "users", userID, "recipes")
-
+      
+      let userRecipes = [];
       try {
         const querySnapshot = await getDocs(recipesRef);
-        let userRecipes = [];
 
         querySnapshot.forEach((doc) => {
           userRecipes.push({ id: doc.id, ...doc.data() });
@@ -45,6 +45,10 @@ document.addEventListener("DOMContentLoaded", () => {
       } catch (error) {
         console.log(`Error  getting  user recipes: `, error)
       }
+
+      // show Total post in ui profile section
+      document.getElementById('post-count').innerText = userRecipes.length
+
     } else {
       alert('User not Logged In....')
     }
@@ -68,9 +72,8 @@ async function displayData(userRecipes) {
       <button onclcik="editData(${post.id})" class="edit-btn">Modify</button>
     
     `
-
-    console.log(post)
     allPostsContainer.appendChild(div)
   })
 }
+
 
