@@ -1,12 +1,10 @@
 import { db, auth } from "../firebase-config.js"
 import {
-  doc,
-  setDoc,
   getDoc,
   getDocs,
+  doc,
   collection,
-  addDoc,
-  deleteDoc
+  getFirestore
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js"
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js"
 
@@ -14,48 +12,38 @@ let userName = document.getElementById('username')
 
 
 document.addEventListener("DOMContentLoaded", () => {
-  
+
   onAuthStateChanged(auth, async (user) => {
     if (user) {
       let userDetails = await getDoc(doc(db, "users", user.uid));
-      
+
+      // show user name 
       if (userDetails.exists()) {
         const getUsername = userDetails.data()
         userName.innerText = `${getUsername.name.firstName} ${getUsername.name.lastName}`
-        
-      }
-    }
+      };
 
-    
-  })
-  // function for fetch recipes 
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      const userID = user.uid;
-      const recipesRef = collection(db, "users", userID, "recipes")
-      
-      let userRecipes = [];
-      try {
-        const querySnapshot = await getDocs(recipesRef);
+      //  get Recipes from User account
+      getUserRecipes(user.uid);
+    };
 
-        querySnapshot.forEach((doc) => {
-          userRecipes.push({ id: doc.id, ...doc.data() });
-        });
-        displayData(userRecipes);     // all recipes are pass from function for displaing in UI.
-      } catch (error) {
-        console.log(`Error  getting  user recipes: `, error)
-      }
 
-      // show Total post in ui profile section
-      document.getElementById('post-count').innerText = userRecipes.length
+  });
 
-    } else {
-      alert('User not Logged In....')
-    }
+});
+let userRecipesCollection = [];
+// Get Recipe 
+async function getUserRecipes(UserID) {
+  const recipesRef = collection(db, `users/${UserID}/recipes`);
+  const querySnapshot = await getDocs(recipesRef)
 
-  })
-})
-
+  querySnapshot.forEach((recipe) => {
+    userRecipesCollection.push({ id: recipe.id, ...recipe.data() });
+  });
+  sortPost(userRecipesCollection)
+  // show Total post in ui profile section
+  document.getElementById('post-count').innerText = userRecipesCollection.length
+}
 
 // recipe display in UI
 async function displayData(userRecipes) {
@@ -75,5 +63,32 @@ async function displayData(userRecipes) {
     allPostsContainer.appendChild(div)
   })
 }
+
+
+// sort Posts by date 
+function sortPost(userRecipesData) {
+  let data = userRecipesData;
+
+  console.log(userRecipesData)
+  let sortedData = data.sort((a, b) => {
+    let dateA = parseDate(a.CreatedAt);
+    let dateB = parseDate(b.CreatedAt);
+
+
+    return dateB - dateA;
+  });
+
+  displayData(sortedData)
+
+};
+
+// Convert "dd-mm-yyyy" to Date and then sort
+function parseDate(CreatedAt) {
+  const [dd, mm, yyyy] = CreatedAt.split('-');
+  return new Date(`${yyyy}-${mm}-${dd}`)
+}
+
+
+
 
 
