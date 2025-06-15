@@ -8,7 +8,6 @@
 
 body {
   font-family: "Roboto Flex", sans-serif;
-  font-optical-sizing: auto;
   background-color: rgba(252, 222, 226, 0.733);
 }
 
@@ -30,9 +29,13 @@ nav .logo img {
   width: 160px;
 }
 
+nav ul {
+  display: flex;
+  align-items: center;
+}
+
 nav ul li {
   font-size: 25px;
-  display: inline-block;
   list-style: none;
   margin-left: 40px;
 }
@@ -43,32 +46,27 @@ nav ul li a {
   text-transform: capitalize;
   color: orangered;
   transition: 0.1s;
+}
 
-  &:hover {
-    border-top: 3px solid rgb(255, 255, 255);
-    border-bottom: 3px solid rgb(255, 255, 255);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-
-  }
+nav ul li a:hover {
+  border: 3px solid white;
+  border-radius: 10px;
 }
 
 #logout {
   font-size: 20px;
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid white;
   background-color: orangered;
   color: white;
   border-radius: 10px;
-  transition: 0.3s ease-in-out;
   padding: 5px 20px;
   cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
 
-  &:hover {
-    background-color: orange;
-    border: 1px solid rgb(255, 255, 255);
-  }
+#logout:hover {
+  background-color: orange;
+  border: 1px solid white;
 }
 
 main {
@@ -82,7 +80,6 @@ main {
   border: 3px solid #ffffff;
   border-radius: 10px;
   margin: auto;
-
 }
 
 .container .inputs p {
@@ -109,7 +106,6 @@ textarea {
   display: flex;
   align-items: center;
   justify-content: space-between;
-
 }
 
 .bottom-line {
@@ -117,33 +113,122 @@ textarea {
   align-items: center;
   justify-content: space-between;
 }
-.bottom-line .upload-image, .difficulty{
+
+.bottom-line .upload-image,
+.bottom-line .difficulty {
   width: 50%;
 }
-.bottom-line .difficulty select{
+
+.bottom-line select,
+.upload-image input {
   width: 100%;
 }
 
-.bottom-line .upload-image input{
-  width: 100%;
-}
-#ingredient-section input{
+#ingredient-section input {
   width: 100%;
 }
 
-#add-ingredient-btn, #post-btn{
+#add-ingredient-btn,
+#post-btn {
   cursor: pointer;
   margin: 10px 0px;
   width: 100%;
   font-size: 22px;
   font-weight: 700;
   padding: 9px 0px;
+  border: none;
 }
-#post-btn{
+
+#post-btn {
   background-color: orange;
 }
-#add-ingredient-btn{
+
+#add-ingredient-btn {
   background-color: olive;
-  color: #ffffff;
-  border: none;
+  color: white;
+}
+
+/* Hamburger */
+.hamburger {
+  display: none;
+  font-size: 30px;
+  color: orangered;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .container {
+    width: 60%;
+    padding: 20px;
+  }
+
+  .container .inputs input,
+  select,
+  textarea {
+    width: 100%;
+  }
+
+  .container .inputs .name-category,
+  .bottom-line {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .bottom-line .upload-image,
+  .bottom-line .difficulty {
+    width: 100%;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  nav {
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 5%;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .nav-items {
+    width: 100%;
+    display: none;
+  }
+
+  .nav-items.active {
+    display: block;
+    background-color: rgb(49, 49, 7);
+    margin-top: 250px;
+    height: 200px;
+  }
+
+  .nav-items ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 20px 0px;
+  }
+
+  .nav-items ul li {
+    display: flex;
+    font-size: 18px;
+    text-align: center;
+    margin: 10px 0;
+  }
+
+  .container {
+    width: 90%;
+    padding: 15px;
+  }
+
+  #add-ingredient-btn,
+  #post-btn {
+    font-size: 18px;
+    padding: 8px 0;
+  }
 }

@@ -12,6 +12,7 @@ body {
   overflow: hidden;
 }
 
+/* Navigation Bar */
 nav {
   max-height: 100px;
   width: 100%;
@@ -43,18 +44,16 @@ nav ul li a {
   text-transform: capitalize;
   color: orangered;
   transition: 0.1s;
-
-  &:hover {
-    border-top: 3px solid rgb(255, 255, 255);
-    border-bottom: 3px solid rgb(255, 255, 255);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-
-  }
 }
 
+nav ul li a:hover {
+  border-top: 3px solid rgb(255, 255, 255);
+  border-bottom: 3px solid rgb(255, 255, 255);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
 
 #logout {
   font-size: 20px;
@@ -71,6 +70,7 @@ nav ul li a {
   background-color: orange;
 }
 
+/* Main Layout */
 main {
   height: 100vh;
   display: flex;
@@ -78,25 +78,26 @@ main {
 }
 
 section {
-  margin-top: 100px;
+  margin-top: 100px; /* Space for the fixed nav */
 }
 
+/* Left Section (Container for Profile Info and Posts) */
 #container {
   width: 60%;
-  height: 100vh;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scroll-behavior: smooth;
+  height: calc(100vh - 100px); /* Adjust for fixed nav */
+  overflow: hidden; /* Hide scrollbar by default */
   border-right: 1px solid #ccc;
+  position: relative;
 }
 
+/* Fixed Profile Information Section */
 #container .information {
   position: fixed;
-  top: 100px;
-  width: 60%;
+  top: 100px; /* Below the nav */
+  width: 60%; /* Match the container width */
   background-color: #e9e4e4;
   z-index: 5;
-
+  padding-bottom: 20px; /* Add some padding to avoid content cutoff */
 }
 
 .first-line {
@@ -170,21 +171,45 @@ section {
   text-align: justify;
 }
 
+/* Posts Section (Scrollable on Hover) */
+#container #all-posts {
+  padding: 40px 10px;
+  margin-top: 260px; /* Adjust based on the height of .information */
+  min-height: calc(100vh - 360px); /* Adjust for nav and fixed section */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  background-color: #e0eed4;
+  text-transform: capitalize;
+  overflow-y: hidden; /* Hide scrollbar by default */
+  transition: overflow-y 0.3s ease;
+}
+
+#container:hover #all-posts {
+  overflow-y: auto; /* Show scrollbar on hover */
+}
+
+/* Right Section (Edit Profile Form, Scrollable on Hover) */
 #edit-profile-form {
   width: 40%;
-  overflow-y: auto;
+  height: calc(100vh - 100px); /* Adjust for fixed nav */
+  overflow-y: hidden; /* Hide scrollbar by default */
   background-color: rgba(31, 36, 4, 0.815);
-  padding:  30px 30px;
+  padding: 30px;
   scroll-behavior: smooth;
+  transition: overflow-y 0.3s ease;
+}
+
+#edit-profile-form:hover {
+  overflow-y: auto; /* Show scrollbar on hover */
 }
 
 #edit-profile-form .container {
   background-color: rgba(240, 243, 247, 0.644);
   border: 3px solid #ffffff;
   border-radius: 10px;
-  margin-top: -120px;
   padding: 10px 30px;
-
+  margin-top: 0; /* Remove negative margin to avoid overlap */
 }
 
 .container .inputs input,
@@ -194,23 +219,23 @@ section {
   font-size: 18px;
   padding: 8px;
   margin-bottom: 20px;
-  
 }
+
 .container .inputs textarea {
-  min-height: 100px;  
-  resize: vertical;    
-  overflow-y: auto; 
+  min-height: 100px;
+  resize: vertical;
+  overflow-y: auto;
 }
 
-
-.container p{
+.container p {
   font-size: 20px;
 }
-.container .inputs .name-category, .time{
+
+.container .inputs .name-category,
+.container .inputs .time {
   display: flex;
   gap: 10px;
 }
-
 
 .bottom-line {
   display: flex;
@@ -242,17 +267,7 @@ section {
   border: none;
 }
 
-#container #all-posts {
-  padding: 40px 10px;
-  margin-top: 380px;
-  min-height: calc(100vh - 480px);
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 10px;
-  background-color: #e0eed4;
-  text-transform: capitalize;
-}
-
+/* Post Cards */
 .post-card {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border: 1px solid #ccc;
@@ -308,7 +323,57 @@ section {
   color: #fff;
 }
 
-/* Responsive */
+/* Custom Scrollbar for Sections */
+#container #all-posts::-webkit-scrollbar,
+#edit-profile-form::-webkit-scrollbar {
+  width: 8px;
+}
+
+#container #all-posts::-webkit-scrollbar-thumb,
+#edit-profile-form::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+#container #all-posts::-webkit-scrollbar-track,
+#edit-profile-form::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+/* Responsive Design */
+
+/* Tablets and Smaller Desktops (Below 1200px) */
+@media (max-width: 1200px) {
+  /* Adjust nav bar */
+  nav .logo img {
+    width: 120px; /* Smaller logo */
+  }
+
+  nav ul li {
+    font-size: 22px;
+    margin-right: 50px;
+  }
+
+  /* Adjust profile section */
+  .first-line .name-details h2 {
+    font-size: 26px;
+    width: 100%; /* Prevent overflow */
+  }
+
+  .first-line .name-details .details {
+    font-size: 18px;
+    margin-right: 60px;
+    width: 70%;
+  }
+
+  /* Adjust post cards grid */
+  #container #all-posts {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 30px 5px;
+  }
+}
+
+/* Tablets and Large Mobiles (Below 992px) */
 @media (max-width: 992px) {
   main {
     flex-direction: column;
@@ -320,41 +385,333 @@ section {
     height: auto;
   }
 
+  /* Adjust fixed profile section */
   #container .information {
-    position: static;
+    position: static; /* Remove fixed positioning */
     width: 100%;
   }
 
-  #container .second-line {
-    padding-top: 20px;
+  /* Adjust posts section */
+  #container #all-posts {
+    margin-top: 0; /* No need for large margin since .information is static */
+    min-height: auto; /* Allow natural height */
+    overflow-y: auto; /* Always allow scrolling on mobile */
   }
 
+  /* Adjust edit form section */
+  #edit-profile-form {
+    height: auto;
+    display: none;
+    overflow-y: auto; /* Always allow scrolling on mobile */
+  }
+
+  /* Adjust profile layout */
   .first-line {
     flex-direction: column;
     align-items: center;
     text-align: center;
   }
 
+  .first-line .profile-photo {
+    width: 100px;
+    height: 100px;
+    border-width: 4px;
+  }
+
   .first-line .name-details {
+    width: 100%;
     flex-direction: column;
+    gap: 10px;
+  }
+
+  .first-line .name-details h2 {
+    font-size: 24px;
+    width: 100%;
   }
 
   .first-line .name-details .details {
-    flex-direction: row;
+    width: 100%;
+    margin-right: 0;
+    font-size: 16px;
     justify-content: center;
-    gap: 10px;
+    gap: 20px;
+  }
+
+  #container .second-line {
+    padding: 15px;
+  }
+
+  #container .second-line p {
+    width: 100%; /* Full width for readability */
+    font-size: 16px;
+    padding: 10px 15px;
+  }
+
+  /* Adjust form inputs */
+  .container .inputs .name-category,
+  .container .inputs .time {
+    flex-direction: column;
+    gap: 5px;
+  }
+
+  .container .inputs input,
+  .container .inputs select,
+  .container .inputs textarea {
+    font-size: 16px;
+    padding: 6px;
+  }
+
+  .container p {
+    font-size: 18px;
+  }
+
+  #add-ingredient-btn,
+  #post-btn {
+    font-size: 20px;
+    padding: 8px 0;
   }
 }
 
+/* Medium Mobiles (Below 768px) */
 @media (max-width: 768px) {
+  /* Adjust nav bar */
+  nav {
+    padding: 0 5%;
+    flex-direction: column;
+    max-height: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  nav .logo img {
+    width: 100px;
+  }
+
+  nav ul {
+    margin-top: 10px;
+  }
+
   nav ul li {
-    margin-right: 30px;
     font-size: 18px;
+    margin-right: 20px;
+  }
+
+  #logout {
+    font-size: 16px;
+    padding: 4px 15px;
+  }
+
+  /* Adjust sections */
+  section {
+    margin-top: 120px; /* Adjust for taller nav */
+  }
+
+  /* Adjust profile section */
+  .first-line {
+    margin-top: 20px;
+    padding: 0 15px;
+  }
+
+  .first-line .profile-photo {
+    width: 80px;
+    height: 80px;
+    border-width: 3px;
+  }
+
+  .first-line .name-details h2 {
+    font-size: 20px;
+  }
+
+  .first-line .name-details .details {
+    font-size: 14px;
+    gap: 15px;
+  }
+
+  #container .second-line h3 {
+    font-size: 22px;
+    padding: 0 15px;
+  }
+
+  #container .second-line p {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  /* Adjust post cards */
+  #container #all-posts {
+    padding: 20px 5px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+  }
+
+  .post-card {
+    padding: 8px;
+  }
+
+  .post-card h4 {
+    font-size: 16px;
+    margin: 6px 0;
+  }
+
+  .post-card .category-p {
+    font-size: 15px;
+  }
+
+  .post-card p {
+    font-size: 12px;
   }
 
   .post-card button {
     font-size: 14px;
     width: 100%;
     margin: 5px 0;
+    padding: 4px 8px;
+  }
+
+  /* Adjust form */
+  #edit-profile-form {
+    padding: 20px;
+    display: none;
+  }
+
+  #edit-profile-form .container {
+    padding: 10px 20px;
+  }
+
+  .container .inputs input,
+  .container .inputs select,
+  .container .inputs textarea {
+    font-size: 14px;
+    padding: 5px;
+  }
+
+  .container p {
+    font-size: 16px;
+  }
+
+  #add-ingredient-btn,
+  #post-btn {
+    font-size: 18px;
+    padding: 6px 0;
+  }
+}
+
+/* Small Mobiles (Below 576px) */
+@media (max-width: 576px) {
+  /* Adjust nav bar */
+  nav {
+    padding: 0 3%;
+  }
+
+  nav .logo img {
+    width: 80px;
+  }
+
+  nav ul li {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  nav ul li a {
+    padding: 3px 10px;
+  }
+
+  #logout {
+    font-size: 14px;
+    padding: 3px 10px;
+  }
+
+  /* Adjust sections */
+  section {
+    margin-top: 100px; /* Adjust for smaller nav */
+  }
+
+  /* Adjust profile section */
+  .first-line {
+    margin-top: 15px;
+    padding: 0 10px;
+  }
+
+  .first-line .profile-photo {
+    width: 60px;
+    height: 60px;
+    border-width: 2px;
+  }
+
+  .first-line .name-details h2 {
+    font-size: 18px;
+  }
+
+  .first-line .name-details .details {
+    font-size: 12px;
+    gap: 10px;
+  }
+
+  #container .second-line h3 {
+    font-size: 20px;
+    padding: 0 10px;
+  }
+
+  #container .second-line p {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+
+  /* Adjust post cards */
+  #container #all-posts {
+    padding: 15px 5px;
+    grid-template-columns: 1fr; /* Single column for very small screens */
+    gap: 5px;
+  }
+
+  .post-card {
+
+    padding: 6px;
+  }
+
+  .post-card h4 {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+
+  .post-card .category-p {
+    font-size: 13px;
+  }
+
+  .post-card p {
+    font-size: 11px;
+  }
+
+  .post-card button {
+    font-size: 12px;
+    padding: 3px 6px;
+  }
+
+  /* Adjust form */
+  #edit-profile-form {
+    padding: 15px;
+    display: none;
+  }
+
+  #edit-profile-form .container {
+    padding: 8px 15px;
+
+  }
+
+  .container .inputs input,
+  .container .inputs select,
+  .container .inputs textarea {
+    font-size: 13px;
+    padding: 4px;
+  }
+
+  .container p {
+    font-size: 14px;
+  }
+
+  #add-ingredient-btn,
+  #post-btn {
+    font-size: 16px;
+    padding: 5px 0;
   }
 }

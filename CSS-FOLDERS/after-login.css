@@ -9,8 +9,10 @@
 body {
   font-family: "Roboto Flex", sans-serif;
   font-optical-sizing: auto;
-  background-color: rgba(252, 222, 226, 0.733);
+  overflow: hidden;
 }
+
+/* Navigation Bar */
 nav {
   max-height: 100px;
   width: 100%;
@@ -21,8 +23,8 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: rgba(231, 217, 217, 0.438);
-  z-index: 1;
+  background-color: rgba(248, 225, 225, 0.993);
+  z-index: 10;
 }
 
 nav .logo img {
@@ -33,7 +35,7 @@ nav ul li {
   font-size: 25px;
   display: inline-block;
   list-style: none;
-  margin-left: 40px;
+  margin-right: 90px;
 }
 
 nav ul li a {
@@ -42,16 +44,15 @@ nav ul li a {
   text-transform: capitalize;
   color: orangered;
   transition: 0.1s;
+}
 
-  &:hover {
-    border-top: 3px solid rgb(255, 255, 255);
-    border-bottom: 3px solid rgb(255, 255, 255);
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
-
-  }
+nav ul li a:hover {
+  border-top: 3px solid rgb(255, 255, 255);
+  border-bottom: 3px solid rgb(255, 255, 255);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 
 #logout {
@@ -63,427 +64,617 @@ nav ul li a {
   transition: 0.3s ease-in-out;
   padding: 5px 20px;
   cursor: pointer;
-
-  &:hover {
-    background-color: orange;
-    border: 1px solid rgb(255, 255, 255);
-  }
 }
 
+#logout:hover {
+  background-color: orange;
+}
+
+/* Main Layout */
 main {
-  width: 100%;
+  height: 100vh;
   display: flex;
-  margin-top: 100px; /* space for fixed nav */
-  min-height: calc(100vh - 100px);
+  overflow: hidden;
 }
 
-/* RESPONSIVE CONTROLS SIDEBAR */
-#controls {
+section {
+  margin-top: 100px; /* Space for the fixed nav */
+}
+
+/* Left Section (Container for Profile Info and Posts) */
+#container {
+  width: 60%;
+  height: calc(100vh - 100px); /* Adjust for fixed nav */
+  overflow: hidden; /* Hide scrollbar by default */
+  border-right: 1px solid #ccc;
+  position: relative;
+}
+
+/* Fixed Profile Information Section */
+#container .information {
   position: fixed;
-  left: 0;
-  top: 100px; /* below nav */
-  background-color: #ffecec;
-  width: 400px;
-  max-width: 100vw;
-  height: calc(100vh - 100px);
-  overflow-y: auto;
-  padding: 20px;
-  box-sizing: border-box;
-  transition: transform 0.3s ease;
-  z-index: 999;
+  top: 100px; /* Below the nav */
+  width: 60%; /* Match the container width */
+  background-color: #e9e4e4;
+  z-index: 5;
+  padding-bottom: 20px; /* Add some padding to avoid content cutoff */
 }
 
-#controls .fields {
-  margin-top: 20px;
-}
-
-#controls .fields input,
-#controls .fields select {
-  margin-bottom: 30px;
+.first-line {
   width: 100%;
-  font-size: 20px;
-  padding: 10px;
-  border: none;
-  outline-color: orange;
-  font-family: monospace;
-}
-
-#controls .fields p {
-  margin-bottom: 10px;
-}
-
-/* RECIPE CONTAINER */
-#recipe-container {
-  margin-left: 400px;
-  background-color: #f3f3f3;
-  width: calc(100vw - 400px);
-  padding: 30px;
-  box-sizing: border-box;
-  min-height: calc(100vh - 100px);
-}
-
-/* recipe cards grid */
-#recipe-container .recipe-cards {
-  margin-bottom: 120px;
-  margin-top: 10px;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 50px 20px;
-  place-items: center;
-}
-
-#recipe-container .recipe-cards .card {
-  border: 1px solid #ccc;
-  background-color: #dff0f060;
-  max-width: 600px;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-#recipe-container .recipe-cards .card:hover {
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-}
-
-
-.card .user-details {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #cec7c7;
-  margin-bottom: 20px;
-  flex-wrap: wrap;
+  margin-top: 30px;
+  padding: 0 20px;
 }
 
-.card .user-details .user-profile-photo {
-  height: 80px;
-  width: 80px;
-  background-color: red;
+.first-line .profile-photo {
+  width: 120px;
+  height: 120px;
   border-radius: 50%;
-  border: 5px solid orange;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
+  border: 6px solid #ccc;
+  overflow: hidden;
 }
 
-.card .user-details .user-profile-photo img {
+.first-line .profile-photo img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 50%;
-  object-fit: cover;
 }
 
-.card .user-details .user-name-date {
-  /* Removed negative margin for better flow */
-  padding: 10px 20px 10px 15px;
-  line-height: 25px;
-  flex-grow: 1;
-  min-width: 0;
-}
-
-.card .user-details .user-name-date h2 {
-  font-size: 19px;
-  border-bottom: 1px solid #857f7f;
-  margin: 0 0 5px 0;
-}
-
-.card .user-details .user-name-date p {
-  font-size: 14px;
-  color: #4d4c4c;
-  margin: 0;
-}
-
-.card .user-details button {
-  font-size: 20px;
-  padding: 5px 50px;
-  background-color: rgb(245, 225, 138);
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  flex-shrink: 0;
-}
-
-.card .user-details button:hover {
-  background-color: #e1cd70;
-}
-
-.card .recipe-media img {
-  max-height: 300px;
-  width: 100%;
-  margin-bottom: 10px;
-  object-fit: cover;
-  border-radius: 10px;
-}
-
-.card .controls {
+.first-line .name-details {
+  width: 86%;
   display: flex;
-  align-items: center;
-  justify-content: start;
-  gap: 20px;
-  flex-wrap: wrap;
-}
-
-.card .like,
-.card .share {
-  line-height: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  font-size: 15px;
-  color: #7a7272;
-  cursor: pointer;
-  user-select: none;
-}
-
-.card i {
-  font-size: 20px;
-}
-
-.card .controls h2 {
-  margin-left: 40px;
-}
-
-.card .descriptionn {
+  justify-content: space-between;
   font-size: 18px;
+  text-transform: capitalize;
+  align-items: center;
+  gap: 20px;
+}
+
+.first-line .name-details h2 {
+  color: #520c0c;
+  font-family: sans-serif;
+  font-size: 30px;
+  width: 600px;
+}
+
+.first-line .name-details .details {
+  display: flex;
+  font-size: 20px;
+  margin-right: 120px;
+  width: 60%;
+  justify-content: space-around;
+  text-align: center;
+}
+
+#container .second-line {
+  padding: 20px;
+}
+
+#container .second-line h3 {
+  font-size: 26px;
+  font-family: monospace;
+  font-weight: 400;
+  padding: 0px 20px;
+  border-bottom: 1px solid rgb(139, 92, 3);
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+#container .second-line p {
+  width: 60%;
+  font-size: 19px;
+  padding: 10px 20px;
   text-align: justify;
 }
 
-/* Trending Button */
-.trending {
-  background-color: #e0dcdc;
-  padding: 10px 15px;
-  border-radius: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  left: 20px;
-  bottom: 20px;
-  cursor: pointer;
-  z-index: 2000;
-  animation: blinkBg 1.2s infinite;
+/* Posts Section (Scrollable on Hover) */
+#container #all-posts {
+  padding: 40px 10px;
+  margin-top: 260px; /* Adjust based on the height of .information */
+  min-height: calc(100vh - 360px); /* Adjust for nav and fixed section */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 10px;
+  background-color: #e0eed4;
+  text-transform: capitalize;
+  overflow-y: hidden; /* Hide scrollbar by default */
+  transition: overflow-y 0.3s ease;
 }
 
-@keyframes blinkBg {
-  0%, 100% {
-    background-color: #d9f72e;
-  }
-  50% {
-    background-color: #ffffff;
-  }
+#container:hover #all-posts {
+  overflow-y: auto; /* Show scrollbar on hover */
 }
 
-.trending p {
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  margin: 0;
+/* Right Section (Edit Profile Form, Scrollable on Hover) */
+#edit-profile-form {
+  width: 40%;
+  height: calc(100vh - 100px); /* Adjust for fixed nav */
+  overflow-y: hidden; /* Hide scrollbar by default */
+  background-color: rgba(31, 36, 4, 0.815);
+  padding: 30px;
+  scroll-behavior: smooth;
+  transition: overflow-y 0.3s ease;
 }
 
-.trending p i {
-  color: rgb(255, 123, 0);
-  margin-right: 10px;
-  font-size: 35px;
+#edit-profile-form:hover {
+  overflow-y: auto; /* Show scrollbar on hover */
 }
 
-/* Footer */
-footer {
-  position: relative;
-  z-index: 1;
+#edit-profile-form .container {
+  background-color: rgba(240, 243, 247, 0.644);
+  border: 3px solid #ffffff;
+  border-radius: 10px;
+  padding: 10px 30px;
+  margin-top: 0; /* Remove negative margin to avoid overlap */
+}
+
+.container .inputs input,
+.container .inputs select,
+.container .inputs textarea {
   width: 100%;
-  background-color: #000000;
-  color: #ccc;
-  padding: 30px 8%;
-  box-sizing: border-box;
-}
-
-footer .tasty-food {
-  text-align: center;
-  padding: 10px;
-}
-
-footer .tasty-food h3 {
-  font-size: 30px;
-  margin-bottom: 10px;
-  color: #d35e5e;
-  text-transform: uppercase;
-  font-family: monospace;
-  letter-spacing: 3px;
-}
-
-footer .tasty-food p {
-  color: #adacac;
   font-size: 18px;
+  padding: 8px;
+  margin-bottom: 20px;
 }
 
-footer .middle {
-  margin-top: 70px;
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-  justify-content: space-between;
-  gap: 30px;
-  padding: 0 30px;
+.container .inputs textarea {
+  min-height: 100px;
+  resize: vertical;
+  overflow-y: auto;
 }
 
-footer .middle h3 {
-  color: #7a7272;
-  font-size: 30px;
-  flex: 1 1 100%;
-}
-
-footer .middle ul {
-  padding: 0;
-  margin: 0 auto;
-  list-style: none;
-  flex: 1 1 200px;
-  text-align: left;
-}
-
-footer .middle ul li {
-  margin: 20px 0;
+.container p {
   font-size: 20px;
+}
+
+.container .inputs .name-category,
+.container .inputs .time {
   display: flex;
-  align-items: center;
+  gap: 10px;
 }
 
-footer .middle ul li i {
-  margin-right: 10px;
-  font-size: 30px;
-  height: 30px;
-  width: 30px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.bottom-line {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
-footer .middle ul li a {
-  text-decoration: none;
-  color: rgb(99, 102, 93);
-  transition: color 0.2s ease-in-out;
+#ingredient-section input {
+  width: 100%;
 }
 
-footer .middle ul li a:hover {
-  color: rgb(255, 255, 255);
+#add-ingredient-btn,
+#post-btn {
+  cursor: pointer;
+  margin: 10px 0px;
+  width: 100%;
+  font-size: 22px;
+  font-weight: 700;
+  padding: 9px 0px;
 }
 
-footer .copyright {
+#post-btn {
+  background-color: orange;
+}
+
+#add-ingredient-btn {
+  background-color: olive;
+  color: #ffffff;
+  border: none;
+}
+
+/* Post Cards */
+.post-card {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  background-color: #f8efef;
+  transition: 0.3s ease-in-out;
+  height: fit-content;
+}
+
+.post-card:hover {
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+  transform: scale(1.03);
+}
+
+.post-card h4 {
   text-align: center;
-  margin-top: 50px;
-  font-size: 20px;
-  color: white;
+  border-bottom: 1px solid #c7b8b8;
+  font-weight: 900;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 8px 0;
 }
 
-/* MEDIA QUERIES */
-
-/* Smaller tablets and large phones */
-@media (max-width: 1024px) {
-  #controls {
-    width: 300px;
-    height: calc(100vh - 100px);
-  }
-
-  #recipe-container {
-    margin-left: 300px;
-    width: calc(100vw - 300px);
-    padding: 20px;
-  }
-
-  #recipe-container .recipe-cards {
-    grid-template-columns: 1fr 1fr;
-    gap: 30px 15px;
-  }
+.post-card .category-p {
+  font-weight: 700;
+  font-family: sans-serif;
+  font-size: 17px;
 }
 
-/* Phones and small tablets */
-@media (max-width: 768px) {
-  nav {
-    padding: 0 5%;
+.post-card p {
+  font-size: 14px;
+}
+
+.post-card button {
+  font-size: 16px;
+  padding: 5px 10px;
+  width: 46%;
+  margin: 10px 4px;
+  cursor: pointer;
+}
+
+.post-card .see-details {
+  background-color: rgb(253, 195, 86);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.post-card .see-details:hover {
+  color: #fff;
+  background-color: rgb(255, 166, 0);
+}
+
+.post-card .edit-btn:hover {
+  background-color: orangered;
+  color: #fff;
+}
+
+/* Custom Scrollbar for Sections */
+#container #all-posts::-webkit-scrollbar,
+#edit-profile-form::-webkit-scrollbar {
+  width: 8px;
+}
+
+#container #all-posts::-webkit-scrollbar-thumb,
+#edit-profile-form::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+#container #all-posts::-webkit-scrollbar-track,
+#edit-profile-form::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+/* Responsive Design */
+
+/* Tablets and Smaller Desktops (Below 1200px) */
+@media (max-width: 1200px) {
+  /* Adjust nav bar */
+  nav .logo img {
+    width: 120px; /* Smaller logo */
   }
 
   nav ul li {
-    font-size: 20px;
-    margin-left: 20px;
+    font-size: 22px;
+    margin-right: 50px;
   }
 
-  #logout {
+  /* Adjust profile section */
+  .first-line .name-details h2 {
+    font-size: 26px;
+    width: 100%; /* Prevent overflow */
+  }
+
+  .first-line .name-details .details {
     font-size: 18px;
-    padding: 5px 15px;
+    margin-right: 60px;
+    width: 70%;
   }
 
+  /* Adjust post cards grid */
+  #container #all-posts {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 30px 5px;
+  }
+}
+
+/* Tablets and Large Mobiles (Below 992px) */
+@media (max-width: 992px) {
   main {
     flex-direction: column;
   }
 
-  /* Controls becomes top bar */
-  #controls {
-    position: relative;
+  #container {
     width: 100%;
     height: auto;
-    padding: 15px 10px;
-    top: auto;
-    left: auto;
-    margin-bottom: 20px;
+    overflow-y: auto; /* Allow scrolling to ensure posts are visible */
   }
 
-  #recipe-container {
-    margin-left: 0;
+  #edit-profile-form {
     width: 100%;
+    height: auto;
+    overflow-y: auto; /* Always allow scrolling on mobile */
+  }
+
+  /* Adjust fixed profile section */
+  #container .information {
+    position: static; /* Remove fixed positioning */
+    width: 100%;
+  }
+
+  /* Adjust posts section */
+  #container #all-posts {
+    margin-top: 0; /* Remove large margin since .information is static */
+    min-height: auto; /* Allow natural height */
+    height: auto; /* Ensure it fits content */
+    overflow-y: auto; /* Always allow scrolling on mobile */
+  }
+
+  /* Adjust profile layout */
+  .first-line {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .first-line .profile-photo {
+    width: 100px;
+    height: 100px;
+    border-width: 4px;
+  }
+
+  .first-line .name-details {
+    width: 100%;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .first-line .name-details h2 {
+    font-size: 24px;
+    width: 100%;
+  }
+
+  .first-line .name-details .details {
+    width: 100%;
+    margin-right: 0;
+    font-size: 16px;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  #container .second-line {
     padding: 15px;
   }
 
-  #recipe-container .recipe-cards {
-    grid-template-columns: 1fr;
-    margin-top: 20px;
-    gap: 30px;
+  #container .second-line p {
+    width: 100%; /* Full width for readability */
+    font-size: 16px;
+    padding: 10px 15px;
   }
 
-  .card .user-details {
+  /* Adjust form inputs */
+  .container .inputs .name-category,
+  .container .inputs .time {
     flex-direction: column;
-    align-items: flex-start;
+    gap: 5px;
   }
 
-  .card .user-details .user-name-date {
-    margin-left: 0;
-    padding-left: 0;
-    margin-top: 10px;
+  .container .inputs input,
+  .container .inputs select,
+  .container .inputs textarea {
+    font-size: 16px;
+    padding: 6px;
   }
 
-  .card .user-details button {
-    margin-top: 10px;
-    width: 100%;
-    padding: 10px;
+  .container p {
     font-size: 18px;
+  }
+
+  #add-ingredient-btn,
+  #post-btn {
+    font-size: 20px;
+    padding: 8px 0;
   }
 }
 
-/* Small phones */
-@media (max-width: 480px) {
+/* Medium Mobiles (Below 768px) */
+@media (max-width: 768px) {
+  /* Hide the edit form */
+  #edit-profile-form {
+    display: none; /* Hide form on small devices */
+  }
+
+  /* Adjust container width since form is hidden */
+  #container {
+    width: 100%;
+    border-right: none; /* Remove border since form is hidden */
+  }
+
+  /* Adjust nav bar */
+  nav {
+    padding: 0 5%;
+    flex-direction: column;
+    max-height: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
   nav .logo img {
-    width: 120px;
+    width: 100px;
+  }
+
+  nav ul {
+    margin-top: 10px;
   }
 
   nav ul li {
     font-size: 18px;
-    margin-left: 15px;
+    margin-right: 20px;
   }
 
   #logout {
     font-size: 16px;
-    padding: 5px 10px;
+    padding: 4px 15px;
   }
 
-  #controls .fields input,
-  #controls .fields select {
+  /* Adjust sections */
+  section {
+    margin-top: 120px; /* Adjust for taller nav */
+  }
+
+  /* Adjust profile section */
+  .first-line {
+    margin-top: 20px;
+    padding: 0 15px;
+  }
+
+  .first-line .profile-photo {
+    width: 80px;
+    height: 80px;
+    border-width: 3px;
+  }
+
+  .first-line .name-details h2 {
+    font-size: 20px;
+  }
+
+  .first-line .name-details .details {
+    font-size: 14px;
+    gap: 15px;
+  }
+
+  #container .second-line h3 {
+    font-size: 22px;
+    padding: 0 15px;
+  }
+
+  #container .second-line p {
+    font-size: 14px;
+    padding: 8px 15px;
+  }
+
+  /* Adjust post cards */
+  #container #all-posts {
+    padding: 20px 5px;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 8px;
+  }
+
+  .post-card {
+    padding: 8px;
+  }
+
+  .post-card h4 {
+    font-size: 16px;
+    margin: 6px 0;
+  }
+
+  .post-card .category-p {
+    font-size: 15px;
+  }
+
+  .post-card p {
+    font-size: 12px;
+  }
+
+  .post-card button {
+    font-size: 14px;
+    width: 100%;
+    margin: 5px 0;
+    padding: 4px 8px;
+  }
+}
+
+/* Small Mobiles (Below 576px) */
+@media (max-width: 576px) {
+  /* Hide the edit form (already hidden at 768px) */
+  #edit-profile-form {
+    display: none; /* Ensure form remains hidden */
+  }
+
+  /* Adjust nav bar */
+  nav {
+    padding: 0 3%;
+  }
+
+  nav .logo img {
+    width: 80px;
+  }
+
+  nav ul li {
+    font-size: 16px;
+    margin-right: 10px;
+  }
+
+  nav ul li a {
+    padding: 3px 10px;
+  }
+
+  #logout {
+    font-size: 14px;
+    padding: 3px 10px;
+  }
+
+  /* Adjust sections */
+  section {
+    margin-top: 100px; /* Adjust for smaller nav */
+  }
+
+  /* Adjust profile section */
+  .first-line {
+    margin-top: 15px;
+    padding: 0 10px;
+  }
+
+  .first-line .profile-photo {
+    width: 60px;
+    height: 60px;
+    border-width: 2px;
+  }
+
+  .first-line .name-details h2 {
     font-size: 18px;
   }
 
-  .card .descriptionn {
-    font-size: 16px;
+  .first-line .name-details .details {
+    font-size: 12px;
+    gap: 10px;
+  }
+
+  #container .second-line h3 {
+    font-size: 20px;
+    padding: 0 10px;
+  }
+
+  #container .second-line p {
+    font-size: 13px;
+    padding: 5px 10px;
+
+    
+  }
+
+  /* Adjust post cards */
+  #container #all-posts {
+ 
+    padding: 15px 5px;
+    grid-template-columns: 1fr; /* Single column for very small screens */
+    gap: 5px;
+  }
+
+  .post-card {
+    padding: 6px;
+  }
+
+  .post-card h4 {
+    font-size: 14px;
+    margin: 5px 0;
+  }
+
+  .post-card .category-p {
+    font-size: 13px;
+  }
+
+  .post-card p {
+    font-size: 11px;
+  }
+
+  .post-card button {
+    font-size: 12px;
+    padding: 3px 6px;
   }
 }

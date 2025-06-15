@@ -2,20 +2,21 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Create- Post Tasty-Food</title>
-  <link rel="stylesheet" href="../CSS-FOLDERS/create.css">
-   <script type="module" src="../JAVASCRIPT-FOLDERS/logout.js"></script>
-   <script type="module" src="../JAVASCRIPT-FOLDERS/create-recipe.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Create Post - Tasty Food</title>
+  <link rel="stylesheet" href="../CSS-FOLDERS/create.css" />
+  <script type="module" src="../JAVASCRIPT-FOLDERS/logout.js"></script>
+  <script type="module" src="../JAVASCRIPT-FOLDERS/create-recipe.js"></script>
 </head>
 
 <body>
   <header>
     <nav>
       <div class="logo">
-        <img src="../ASSETS/logo.png" alt="logo">
+        <img src="../ASSETS/logo.png" alt="logo" />
       </div>
+      <div class="hamburger">&#9776;</div>
       <div class="nav-items">
         <ul>
           <li><a href="../HTML-FOLDERS/after-login.html">Recipe Feed</a></li>
@@ -27,15 +28,14 @@
     </nav>
   </header>
 
-
   <main>
     <div class="container">
       <div class="inputs">
         <p>Title</p>
         <div class="name-category">
-          <input type="text" placeholder="Recipe Title" id="recipe-title">
-          <select name="category" id="category">
-            <option value="" selected disabled>Category</option>
+          <input type="text" placeholder="Recipe Title" id="recipe-title" />
+          <select id="category">
+            <option value="" disabled selected>Category</option>
             <option value="breakfast">Breakfast</option>
             <option value="lunch">Lunch</option>
             <option value="dinner">Dinner</option>
@@ -44,42 +44,47 @@
             <option value="other">Other</option>
           </select>
         </div>
+
         <p>Description</p>
-        <textarea name="description" id="description" placeholder="Write Short Description"></textarea>
+        <textarea id="description" placeholder="Write Short Description"></textarea>
+
         <p>Ingredient</p>
         <div class="ingredients" id="ingredient-section">
-          <input type="text" placeholder="Ingredient with Quantity" name="ingredients" >
+          <input type="text" placeholder="Ingredient with Quantity" name="ingredients" />
           <button id="add-ingredient-btn">+ Add Ingredient</button>
         </div>
+
         <p>Preparation Steps</p>
-        <textarea name="preparation-steps" id="preparation-steps"></textarea>
+        <textarea id="preparation-steps"></textarea>
+
         <p>Cooking Time</p>
         <div class="time">
-          <input type="number" placeholder="Hour" id="hour">
-          <input type="number" placeholder="Minutes" id="minute">
+          <input type="number" placeholder="Hour" id="hour" />
+          <input type="number" placeholder="Minutes" id="minute" />
         </div>
 
         <div class="bottom-line">
           <div class="difficulty">
             <p>Difficulty Level</p>
-            <select name=" dfficulty" id="difficulty">
+            <select id="difficulty">
               <option value="" disabled selected>Select Difficulty</option>
               <option value="easy">Easy</option>
               <option value="medium">Medium</option>
               <option value="hard">Hard</option>
             </select>
           </div>
+
           <div class="upload-image">
             <p>Upload Image</p>
-            <input type="file" id="recipe-image">
+            <input type="file" id="recipe-image" />
           </div>
         </div>
 
-        <button id="post-btn">Post </button>
+        <button id="post-btn">Post</button>
       </div>
-
     </div>
   </main>
+
 
 </body>
 
