@@ -32,7 +32,7 @@ function displayRecipes(allRecipes) {
             </div>
             <div class="user-name-date">
               <h2>Abhishek verma</h2>
-              <p>22-03-2025</p>
+              <p>${recipe.CreatedAt}</p>
             </div>
             <button>Follow</button>
           </div>
@@ -52,10 +52,7 @@ function displayRecipes(allRecipes) {
             <h2><i class="fa-regular fa-bookmark" style="color: #fa7900;"></i></h2>
           </div>
           <div class="descriptionn">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum ea in iusto natus ab eos non iure
-              quisquam
-              dolorum. Illo ut harum dignissimos laudantium quidem possimus, facere placeat voluptatem ex quae quaerat
-              atque unde obcaecati distinctio accusamus. Provident, sapiente at.</p>
+            <p>${recipe.Description}</p>
           </div>
   
   `;
