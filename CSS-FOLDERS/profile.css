@@ -174,7 +174,7 @@ section {
 /* Posts Section (Scrollable on Hover) */
 #container #all-posts {
   padding: 40px 10px;
-  margin-top: 260px; /* Adjust based on the height of .information */
+  margin-top: 300px; /* Adjust based on the height of .information */
   min-height: calc(100vh - 360px); /* Adjust for nav and fixed section */
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -275,6 +275,7 @@ section {
   background-color: #f8efef;
   transition: 0.3s ease-in-out;
   height: fit-content;
+  margin-top: 40px;
 }
 
 .post-card:hover {
