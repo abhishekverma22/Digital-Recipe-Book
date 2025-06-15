@@ -4,7 +4,7 @@ import {
   getDocs,
   doc,
   collection,
-  getFirestore
+  updateDoc
 } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js"
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js"
 
@@ -47,29 +47,31 @@ async function getUserRecipes(UserID) {
 
 // recipe display in UI
 async function displayData(userRecipes) {
+  const allPostsContainer = document.getElementById('all-posts');
 
-  let allPostsContainer = document.getElementById('all-posts');
   userRecipes.forEach((post) => {
-    let div = document.createElement('div');
-    div.className = "post-card"
+    const div = document.createElement('div');
+    div.className = "post-card";
     div.innerHTML = `
-      <h4>${post.Title}</h4>
-      <p class="category-p"><span>Category : </span>${post.Category}</p>
-      <p><span>Date : </span>${post.CreatedAt}</p>
-      <button onclick="seeDetails(${post})" class="see-details">See Details</button>
-      <button onclcik="editData(${post.id})" class="edit-btn">Modify</button>
-    
-    `
-    allPostsContainer.appendChild(div)
-  })
+        <h4>${post.Title}</h4>
+        <p class="category-p"><span>Category : </span>${post.Category}</p>
+        <p><span>Date : </span>${post.CreatedAt}</p>
+        <button  class="see-details">See Details</button>
+        <button onclick="modifyData()" class="edit-btn">Modify</button>
+      `;
+    allPostsContainer.appendChild(div);
+  });
+
+
+ 
 }
+
+
 
 
 // sort Posts by date 
 function sortPost(userRecipesData) {
   let data = userRecipesData;
-
-  console.log(userRecipesData)
   let sortedData = data.sort((a, b) => {
     let dateA = parseDate(a.CreatedAt);
     let dateB = parseDate(b.CreatedAt);
@@ -87,6 +89,11 @@ function parseDate(CreatedAt) {
   const [dd, mm, yyyy] = CreatedAt.split('-');
   return new Date(`${yyyy}-${mm}-${dd}`)
 }
+
+
+
+
+//  update recipes
 
 
 

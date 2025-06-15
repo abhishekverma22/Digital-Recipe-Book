@@ -11,7 +11,6 @@ body {
   font-optical-sizing: auto;
   background-color: rgba(252, 222, 226, 0.733);
 }
-
 nav {
   max-height: 100px;
   width: 100%;
@@ -55,12 +54,15 @@ nav ul li a {
   }
 }
 
-.sign-in-login {
+.sign-in-login{
+  font-size: 20px;
   border: 1px solid rgb(255, 255, 255);
   background-color: orangered;
   color: white;
   border-radius: 10px;
   transition: 0.3s ease-in-out;
+  padding: 5px 20px;
+  cursor: pointer;
 
   &:hover {
     background-color: orange;
@@ -68,27 +70,36 @@ nav ul li a {
   }
 }
 
+
 main {
   width: 100%;
   display: flex;
+  margin-top: 100px; /* space for fixed nav */
+  min-height: calc(100vh - 100px);
 }
 
-
-
+/* RESPONSIVE CONTROLS SIDEBAR */
 #controls {
   position: fixed;
   left: 0;
+  top: 100px; /* below nav */
   background-color: #ffecec;
   width: 400px;
+  max-width: 100vw;
+  height: calc(100vh - 100px);
+  overflow-y: auto;
   padding: 20px;
+  box-sizing: border-box;
+  transition: transform 0.3s ease;
+  z-index: 999;
 }
 
 #controls .fields {
-  margin-top: 150px;
+  margin-top: 20px;
 }
 
 #controls .fields input,
-select {
+#controls .fields select {
   margin-bottom: 30px;
   width: 100%;
   font-size: 20px;
@@ -97,130 +108,51 @@ select {
   outline-color: orange;
   font-family: monospace;
 }
-#controls .fields p{
+
+#controls .fields p {
   margin-bottom: 10px;
 }
 
+/* RECIPE CONTAINER */
 #recipe-container {
   margin-left: 400px;
   background-color: #f3f3f3;
   width: calc(100vw - 400px);
   padding: 30px;
+  width: 100vw;
+  box-sizing: border-box;
+  min-height: calc(100vh - 100px);
 }
 
+/* recipe cards grid */
 #recipe-container .recipe-cards {
   margin-bottom: 120px;
-  margin-top: 100px;
+  margin-top: 10px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  row-gap: 50px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
   place-items: center;
 }
+.user-details{
+  border: 1px solid black;
+  max-height: 600px;
+  width: 350px;
+  padding: 10px 20px;
 
-#recipe-container .recipe-cards .card {
-  border: 1px solid #ccc;
-  background-color: #dff0f060;
-  max-width: 600px;
-  border-radius: 20px;
-  padding: 20px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-  transition: 0.3s ease-in-out;
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
-  }
 }
-
-.card .user-details {
+.user-name{
+  text-transform: capitalize;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 5px;
-  border-bottom: 1px solid #cec7c7;
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #fdb6b6;
 }
-
-.card .user-details .user-profile-photo {
-  height: 80px;
-  width: 80px;
-  background-color: red;
-  border-radius: 50%;
-  border: 5px solid orange;
-  display: flex;
-  align-items: center;
-}
-
-.card .user-details .user-profile-photo img {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-}
-
-.card .user-details .user-name-date {
-  margin-left: -130px;
-  padding: 10px 20px 10px 0px;
-  line-height: 25px;
-}
-
-.card .user-details .user-name-date h2 {
-  font-size: 19px;
-  border-bottom: 1px solid #857f7f;
-}
-
-.card .user-details .user-name-date p {
-  font-size: 14px;
-  color: #4d4c4c;
-}
-
-.card .user-details button {
-  font-size: 20px;
-  padding: 5px 50px;
-  background-color: rgb(245, 225, 138);
-
-}
-
-.card .recipe-media img {
-  max-height: 300px;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.card .controls {
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  gap: 20px;
-}
-
-.card .like,
-.share {
-  line-height: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  font-size: 20px;
-  color: #7a7272;
+.user-name i{
+  font-size: 30px;
   cursor: pointer;
 }
-
-.card i {
-  font-size: 30px;
-}
-
-.card .controls h2 {
-  margin-left: 70px;
-}
-
-.card .descriptionn {
-  font-size: 18px;
-  text-align: justify;
-}
-
-
-
-
+/* Trending Button */
 .trending {
   background-color: #e0dcdc;
   padding: 10px 15px;
@@ -232,18 +164,14 @@ select {
   left: 20px;
   bottom: 20px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 2000;
   animation: blinkBg 1.2s infinite;
-
 }
 
 @keyframes blinkBg {
-
-  0%,
-  100% {
+  0%, 100% {
     background-color: #d9f72e;
   }
-
   50% {
     background-color: #ffffff;
   }
@@ -253,42 +181,24 @@ select {
   font-size: 20px;
   display: flex;
   align-items: center;
+  margin: 0;
 }
 
 .trending p i {
   color: rgb(255, 123, 0);
   margin-right: 10px;
   font-size: 35px;
-
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* footer */
+/* Footer */
 footer {
   position: relative;
   z-index: 1;
-  width: 100%;
+  width: 100vw;
   background-color: #000000;
   color: #ccc;
   padding: 30px 8%;
+  box-sizing: border-box;
 }
 
 footer .tasty-food {
@@ -313,26 +223,36 @@ footer .tasty-food p {
 footer .middle {
   margin-top: 70px;
   display: flex;
+  flex-wrap: wrap;
   text-align: center;
   justify-content: space-between;
-  padding: 0px 30px;
-
+  gap: 30px;
+  padding: 0 30px;
 }
 
 footer .middle h3 {
   color: #7a7272;
   font-size: 30px;
+  flex: 1 1 100%;
 }
 
-footer .middle ul li {
+footer .middle ul {
+  padding: 0;
+  margin: 0 auto;
   list-style: none;
-  margin: 20px auto;
-  font-size: 20px;
+  flex: 1 1 200px;
   text-align: left;
 }
 
+footer .middle ul li {
+  margin: 20px 0;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
 footer .middle ul li i {
-  margin: 0px 20px;
+  margin-right: 10px;
   font-size: 30px;
   height: 30px;
   width: 30px;
@@ -344,11 +264,11 @@ footer .middle ul li i {
 footer .middle ul li a {
   text-decoration: none;
   color: rgb(99, 102, 93);
-  transition: 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out;
+}
 
-  &:hover {
-    color: rgb(255, 255, 255);
-  }
+footer .middle ul li a:hover {
+  color: rgb(255, 255, 255);
 }
 
 footer .copyright {
@@ -356,4 +276,113 @@ footer .copyright {
   margin-top: 50px;
   font-size: 20px;
   color: white;
+}
+
+/* MEDIA QUERIES */
+
+/* Smaller tablets and large phones */
+@media (max-width: 1024px) {
+  #controls {
+    width: 300px;
+    height: calc(100vh - 100px);
+  }
+
+  #recipe-container {
+    margin-left: 300px;
+    width: calc(100vw - 300px);
+    padding: 20px;
+  }
+
+  #recipe-container .recipe-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 30px 15px;
+  }
+}
+
+/* Phones and small tablets */
+@media (max-width: 768px) {
+  nav {
+    padding: 0 5%;
+  }
+
+  nav ul li {
+    font-size: 20px;
+    margin-left: 20px;
+  }
+
+  #logout {
+    font-size: 18px;
+    padding: 5px 15px;
+  }
+
+  main {
+    flex-direction: column;
+  }
+
+  /* Controls becomes top bar */
+  #controls {
+    position: relative;
+    width: 100%;
+    height: auto;
+    padding: 15px 10px;
+    top: auto;
+    left: auto;
+    margin-bottom: 20px;
+  }
+
+  #recipe-container {
+    margin-left: 0;
+    width: 100%;
+    padding: 15px;
+  }
+
+  #recipe-container .recipe-cards {
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+    gap: 30px;
+  }
+
+  .card .user-details {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .card .user-details .user-name-date {
+    margin-left: 0;
+    padding-left: 0;
+    margin-top: 10px;
+  }
+
+  .card .user-details button {
+    margin-top: 10px;
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+  nav .logo img {
+    width: 120px;
+  }
+
+  nav ul li {
+    font-size: 18px;
+    margin-left: 15px;
+  }
+
+  #logout {
+    font-size: 16px;
+    padding: 5px 10px;
+  }
+
+  #controls .fields input,
+  #controls .fields select {
+    font-size: 18px;
+  }
+
+  .card .descriptionn {
+    font-size: 16px;
+  }
 }
