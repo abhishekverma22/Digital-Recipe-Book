@@ -31,8 +31,8 @@ function displayRecipes(allRecipes) {
               <img src="../ASSETS/profile.png" alt="user profile photo">
             </div>
             <div class="user-name-date">
-              <h2>Abhishek verma</h2>
-              <p>${recipe.CreatedAt}</p>
+              <h2>${recipe.Name}</h2>
+              <p style="color: #ff1a1a;">${recipe.CreatedAt}</p>
             </div>
             <button>Follow</button>
           </div>
@@ -48,7 +48,7 @@ function displayRecipes(allRecipes) {
               <i class="fa-solid fa-share" style="color: #ffc800;"></i>
               <p>Share</p>
             </div>
-            <h2>Recipe Title</h2>
+            <h2>${recipe.Title}</h2>
             <h2><i class="fa-regular fa-bookmark" style="color: #fa7900;"></i></h2>
           </div>
           <div class="descriptionn">

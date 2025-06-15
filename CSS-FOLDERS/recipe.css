@@ -54,7 +54,7 @@ nav ul li a {
   }
 }
 
-.sign-in-login{
+#logout {
   font-size: 20px;
   border: 1px solid rgb(255, 255, 255);
   background-color: orangered;
@@ -69,7 +69,6 @@ nav ul li a {
     border: 1px solid rgb(255, 255, 255);
   }
 }
-
 
 main {
   width: 100%;
@@ -119,7 +118,6 @@ main {
   background-color: #f3f3f3;
   width: calc(100vw - 400px);
   padding: 30px;
-  width: 100vw;
   box-sizing: border-box;
   min-height: calc(100vh - 100px);
 }
@@ -129,29 +127,132 @@ main {
   margin-bottom: 120px;
   margin-top: 10px;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 50px 20px;
   place-items: center;
 }
-.user-details{
-  border: 1px solid black;
-  max-height: 600px;
-  width: 350px;
-  padding: 10px 20px;
 
+#recipe-container .recipe-cards .card {
+  border: 1px solid #ccc;
+  background-color: #dff0f060;
+  max-width: 600px;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  transition: box-shadow 0.3s ease-in-out;
 }
-.user-name{
-  text-transform: capitalize;
+
+#recipe-container .recipe-cards .card:hover {
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+
+.card .user-details {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #fdb6b6;
+  padding-bottom: 5px;
+  border-bottom: 1px solid #cec7c7;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
-.user-name i{
-  font-size: 30px;
+
+.card .user-details .user-profile-photo {
+  height: 80px;
+  width: 80px;
+  background-color: red;
+  border-radius: 50%;
+  border: 5px solid orange;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.card .user-details .user-profile-photo img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.card .user-details .user-name-date {
+  /* Removed negative margin for better flow */
+  padding: 10px 20px 10px 15px;
+  line-height: 25px;
+  flex-grow: 1;
+  min-width: 0;
+}
+
+.card .user-details .user-name-date h2 {
+  font-size: 19px;
+  border-bottom: 1px solid #857f7f;
+  margin: 0 0 5px 0;
+}
+
+.card .user-details .user-name-date p {
+  font-size: 14px;
+  color: #4d4c4c;
+  margin: 0;
+}
+
+.card .user-details button {
+  font-size: 20px;
+  padding: 5px 50px;
+  background-color: rgb(245, 225, 138);
   cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
 }
+
+.card .user-details button:hover {
+  background-color: #e1cd70;
+}
+
+.card .recipe-media img {
+  max-height: 300px;
+  width: 100%;
+  margin-bottom: 10px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.card .controls {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.card .like,
+.card .share {
+  line-height: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  font-size: 15px;
+  color: #7a7272;
+  cursor: pointer;
+  user-select: none;
+}
+
+.card i {
+  font-size: 20px;
+}
+
+.card .controls h2 {
+  margin-left: 40px;
+}
+
+.card .descriptionn {
+  font-size: 18px;
+  text-align: justify;
+}
+
 /* Trending Button */
 .trending {
   background-color: #e0dcdc;
@@ -194,7 +295,7 @@ main {
 footer {
   position: relative;
   z-index: 1;
-  width: 100vw;
+  width: 100%;
   background-color: #000000;
   color: #ccc;
   padding: 30px 8%;
